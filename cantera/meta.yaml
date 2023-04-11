@@ -16,6 +16,7 @@ requirements:
     - scons >=4.1
   host:
     - libboost
+    - hdf5
     - openblas  # [osx]
     # - mkl  # [linux] # TODO: reactivate MKL in permanent fix of #29
     - pywin32  # [win]
@@ -42,10 +43,12 @@ outputs:
         - scons >=4.1
       host:
         - libboost
+        - hdf5
         - pywin32  # [win]
         - openblas  # [osx]
         # - mkl  # [linux] # TODO: reactivate MKL in permanent fix of #29
       run:
+        - hdf5
         # - mkl  # [linux] # TODO: reactivate MKL in permanent fix of #29
         - openblas  # [osx]
     test:
@@ -65,12 +68,14 @@ outputs:
         - scons >=4.1
       host:
         - libboost
+        - hdf5
         - openblas  # [osx]
         # - mkl  # [linux] # TODO: reactivate MKL in permanent fix of #29
         - pywin32  # [win]
         - libcantera {{ version }}
       run:
         - libboost
+        - hdf5
         - {{ pin_subpackage('libcantera', exact=True) }}
 
   - name: cantera
@@ -86,6 +91,7 @@ outputs:
         - pip
         - setuptools
         - libboost
+        - hdf5
         - numpy
         - openblas  # [osx]
         # - mkl  # [linux] # TODO: reactivate MKL in permanent fix of #29
@@ -98,9 +104,9 @@ outputs:
         - python
         - setuptools
         - {{ pin_compatible('numpy') }}
-        - h5py
         - ruamel.yaml
         - {{ pin_subpackage('libcantera', exact=True) }}
+        - hdf5
         - openblas  # [osx]
         # - mkl  # [linux] # TODO: reactivate MKL in permanent fix of #29
     build:
